@@ -1,0 +1,55 @@
+<form id="logRoundForm">
+    <center>
+      <label for="roundDate">Date:
+          <input id="roundDate" class="form-control form-center" type="date" 
+          required>
+      </label>
+      <p></p>
+      <label for="roundCourse">Course:
+          <input id="roundCourse" class="form-control form-center" type="text" 
+          placeholder="Course played" size="50" maxlength="50" required>
+      </label>
+      <p></p>
+      <label for="roundType">Type:
+          <select id="roundType" name="roundType" class="form-control form-center">
+            <option value="practice" selected>Practice</option>
+            <option value="tournament">Tournament</option>
+          </select> 
+      </label>
+      <p></p>
+      <label for="roundHoles"># Holes:
+          <select id="roundHoles" name="roundHoles" class="form-control">
+            <option value="9">9</option>
+            <option value="18" selected>18</option>
+          </select> 
+      </label>
+      <p></p>
+      <label for="roundStrokes"># Strokes:
+          <input id="roundStrokes" class="form-control form-center" type="number" 
+          placeholder="Course played" min="9" max="200" value="80" 
+          onChange="updateSGS()" required>
+      </label>
+      <p></p>
+      <label for="roundTime">Time:<br>
+          <input id="roundMinutes" type="number" size="3"
+          min="10" max="400" value="50" style="text-align: right"
+          onChange="updateSGS()" required> : 
+          <input id="roundSeconds" type="number" size="2"
+          min="0" max="60" value="00" onchange="changeSeconds()"
+          required>
+      </label>
+      <p></p>
+      <label for="roundSGS">Speedgolf Score:<br>
+          <input id="roundSGS" class="form-center" type="text" size="6" value="130:00" disabled>
+      </label>
+      <p></p>
+      <label for="roundNotes">Notes:<br>
+          <textarea id="roundNotes" class="form-control" rows="6" cols="75" placeholder="Enter round notes""></textarea>
+      </label>
+      <p></p>
+      <button id="submitRoundBtn" type="submit" 
+      class="btn btn-primary btn-block btncolortheme" 
+      style="width:70%; font-size: 36px; z-index: 110"><span
+      id="saveIcon">&nbsp;</span><span id="submitBtnLabel"></span></button>       
+      </center>
+  </form>

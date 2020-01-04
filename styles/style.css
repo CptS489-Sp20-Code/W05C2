@@ -1,0 +1,8 @@
+/* Styling to center form element contents */
+input {
+    text-align:center;
+}
+
+option {
+    text-align:center;
+}
