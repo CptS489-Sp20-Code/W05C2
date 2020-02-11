@@ -25,13 +25,13 @@ class RoundForm extends React.Component {
           <center>
             <label>
               Date:
-              <input name="date" className="form-control form-center" 
+              <input name="date" className="form-control" 
                 type="date" value={this.state.date} onChange={this.handleChange} />
             </label>
             <p></p>
             <label>
               Course:
-              <input name="course" className="form-control form-center" type="text"
+              <input name="course" className="form-control" type="text"
                 value={this.state.course} onChange={this.handleChange}
                 placeholder="Course played" size="50" maxLength="50" />
             </label>
