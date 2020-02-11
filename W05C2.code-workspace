@@ -10,7 +10,34 @@
 			{
 				"pattern": {
 					"type": "string",
-					"expression": "event.preventDefault();\r\n      localStorage.setItem(\"userData\",JSON.stringify(this.state));\r\n      alert(\"Local user data now contains \" + localStorage.getItem(\"userData\"));",
+					"expression": "<button type=\"submit\" className=\"btn btn-primary btn-color-theme\"\r\n             style={{width: \"70%\",fontSize: \"36px\"}}>\r\n               <span className={this.state.submitIcon}></span>\r\n               &nbsp;{this.state.submitLabel}\r\n          </button",
+					"ignoreCase": false,
+					"wholeMatch": false
+				},
+				"color": "yellow"
+			},
+			{
+				"pattern": {
+					"type": "string",
+					"expression": "submitIcon: \"fa fa-save\",\r\n                    submitLabel: \"Save Data\"",
+					"ignoreCase": false,
+					"wholeMatch": false
+				},
+				"color": "yellow"
+			},
+			{
+				"pattern": {
+					"type": "string",
+					"expression": "handleSubmit = (event) => {\r\n      event.preventDefault();\r\n      this.setState({submitIcon: \"fa fa-spin fa-spinner\", submitLabel: \"Saving...\"});\r\n      setTimeout(this.handleSubmitCallback,1000);\r\n    }",
+					"ignoreCase": false,
+					"wholeMatch": false
+				},
+				"color": "yellow"
+			},
+			{
+				"pattern": {
+					"type": "string",
+					"expression": "handleSubmitCallback = () => {\r\n      this.setState({submitIcon: \"fa fa-save\", submitLabel: \"Save Data\"});\r\n      let data = this.state;\r\n      delete data.submitIcon;\r\n      delete data.submitLabel;\r\n      localStorage.setItem(\"userData\",JSON.stringify(data));\r\n      alert(\"Local user data now contains \" + localStorage.getItem(\"userData\"));\r\n    }",
 					"ignoreCase": false,
 					"wholeMatch": false
 				},

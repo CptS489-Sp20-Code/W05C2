@@ -10,7 +10,9 @@ class RoundForm extends React.Component {
                     holes: "18",
                     strokes: 80,
                     minutes: 50,
-                    seconds: "00"};  
+                    seconds: "00",
+                    submitIcon: "fa fa-save",
+                    submitLabel: "Save Data"};  
     }
   
     handleChange = (event) => {
@@ -26,9 +28,19 @@ class RoundForm extends React.Component {
       
     handleSubmit = (event) => {
       event.preventDefault();
-      localStorage.setItem("userData",JSON.stringify(this.state));
+      this.setState({submitIcon: "fa fa-spin fa-spinner", submitLabel: "Saving..."});
+      setTimeout(this.handleSubmitCallback,1000);
+    }
+
+    handleSubmitCallback = () => {
+      this.setState({submitIcon: "fa fa-save", submitLabel: "Save Data"});
+      let data = this.state;
+      delete data.submitIcon;
+      delete data.submitLabel;
+      localStorage.setItem("userData",JSON.stringify(data));
       alert("Local user data now contains " + localStorage.getItem("userData"));
     }
+
 
     computeSGS = () => {
       return (Number(this.state.strokes) + Number(this.state.minutes)) 
@@ -97,8 +109,11 @@ class RoundForm extends React.Component {
                 onChange={this.handleChange} />
           </label>
           <p></p>
-          <input type="submit" className="btn btn-primary btn-color-theme"
-             style={{width: "70%",fontSize: "36px"}} value="Save Data"/>
+          <button type="submit" className="btn btn-primary btn-color-theme"
+             style={{width: "70%",fontSize: "36px"}}>
+               <span className={this.state.submitIcon}></span>
+               &nbsp;{this.state.submitLabel}
+          </button>
           </center>
         </form>
       );
