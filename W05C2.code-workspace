@@ -10,52 +10,7 @@
 			{
 				"pattern": {
 					"type": "string",
-					"expression": "computeSGS = () => {\r\n      return (Number(this.state.strokes) + Number(this.state.minutes)) \r\n                  + \":\" + this.state.seconds;\r\n    }",
-					"ignoreCase": false,
-					"wholeMatch": false
-				},
-				"color": "yellow"
-			},
-			{
-				"pattern": {
-					"type": "string",
-					"expression": "if (name === \"seconds\") {\r\n        this.setState({seconds: \r\n          (event.target.value.length < 2 ? \"0\" + event.target.value : \r\n             event.target.value)});\r\n      } else {",
-					"ignoreCase": false,
-					"wholeMatch": false
-				},
-				"color": "yellow"
-			},
-			{
-				"pattern": {
-					"type": "string",
-					"expression": "holes: \"18\",\r\n                    strokes: 80,\r\n                    minutes: 50,\r\n                    seconds: \"00\"",
-					"ignoreCase": false,
-					"wholeMatch": false
-				},
-				"color": "yellow"
-			},
-			{
-				"pattern": {
-					"type": "string",
-					"expression": "# Holes:\r\n          <select name=\"holes\" value={this.state.holes} \r\n            className=\"form-control form-center\" onChange={this.handleChange}>\r\n            <option value=\"9\">9</option>\r\n            <option value=\"18\">18</option>\r\n          </select> \r\n          </label>\r\n          <p></p>\r\n          <label># Strokes:\r\n          <input name=\"strokes\" className=\"form-control form-center\" type=\"number\" \r\n            min=\"9\" max=\"200\" value={this.state.strokes} \r\n            onChange={this.handleChange} />\r\n          </label>\r\n          <p></p>\r\n          <label>Time: <br></br>\r\n          <input name=\"minutes\" type=\"number\" size=\"3\"\r\n            min=\"10\" max=\"400\" value={this.state.minutes}\r\n            onChange={this.handleChange} />:  \r\n          <input name=\"seconds\" type=\"number\" size=\"2\"\r\n            min=\"0\" max=\"60\" value={this.state.seconds} \r\n            onChange={this.handleChange} />\r\n          </label>\r\n          <p></p>\r\n          <label>Speedgolf Score: <br></br>\r\n              <input name=\"SGS\" className=\"form-center\" type=\"text\" size=\"6\" \r\n                disabled={true} value={this.computeSGS()} />\r\n          </label>\r\n          <p></p>\r\n          <label>Notes:\r\n              <textarea name=\"notes\" className=\"form-control\" rows=\"6\" cols=\"75\" \r\n                placeholder=\"Enter round notes\" value={this.state.notes} \r\n                onChange={this.handleChange} />\r\n          </label>",
-					"ignoreCase": false,
-					"wholeMatch": false
-				},
-				"color": "yellow"
-			},
-			{
-				"pattern": {
-					"type": "string",
-					"expression": "style={{width: \"70%\",fontSize: \"36px\"}",
-					"ignoreCase": false,
-					"wholeMatch": false
-				},
-				"color": "yellow"
-			},
-			{
-				"pattern": {
-					"type": "string",
-					"expression": ".btn-color-theme {\r\n    background-color: #13294E;\r\n    color: white;\r\n}",
+					"expression": "event.preventDefault();\r\n      localStorage.setItem(\"userData\",JSON.stringify(this.state));\r\n      alert(\"Local user data now contains \" + localStorage.getItem(\"userData\"));",
 					"ignoreCase": false,
 					"wholeMatch": false
 				},
