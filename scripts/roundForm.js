@@ -18,21 +18,11 @@ class RoundForm extends React.Component {
       return (Number(this.state.strokes) + Number(this.state.minutes)) 
                   + ":" + this.state.seconds;
     }
-
-    handleChange = (event) => {
-      const name = event.target.name;
-      if (name === "seconds") {
-        this.setState({seconds: 
-          (event.target.value.length < 2 ? "0" + event.target.value : 
-             event.target.value)});
-      } else {
-        this.setState({[name]: event.target.value});
-      }
-    }
   
     handleSubmit = (event) => {
-      alert('The form was submitted!');
       event.preventDefault();
+      localStorage.setItem("userData",JSON.stringify(this.state));
+      alert("Local user data now contains " + localStorage.getItem("userData"));
     }
   
     render() {

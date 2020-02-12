@@ -4,7 +4,7 @@
             {
                 "pattern": {
                     "type": "string",
-                    "expression": "this.state.SGS",
+                    "expression": "<button type=\"submit\" className=\"btn btn-primary btn-color-theme\"\r\n             style={{width: \"70%\",fontSize: \"36px\"}}>\r\n               <span className={this.state.submitIcon}></span>\r\n               &nbsp;{this.state.submitLabel}\r\n          </button>",
                     "ignoreCase": false,
                     "wholeMatch": false
                 },
@@ -13,7 +13,7 @@
             {
                 "pattern": {
                     "type": "string",
-                    "expression": "handleChange = (event) => {\r\n        const name = event.target.name;\r\n        if (name === \"seconds\") {\r\n          let newSec = (event.target.value.length < 2 ? \"0\" + \r\n            event.target.value : event.target.value);\r\n          let newSGS = this.computeSGS(this.state.strokes, \r\n            this.state.minutes, newSec);\r\n          this.setState({seconds: newSec, SGS: newSGS});\r\n        } else if (name === \"strokes\") {\r\n          let newStrokes = event.target.value;\r\n          let newSGS = this.computeSGS(newStrokes, this.state.minutes, \r\n            this.state.seconds);\r\n          this.setState({strokes: newStrokes, SGS: newSGS});\r\n        } else if (name === \"minutes\") {\r\n            let newMin = event.target.value;\r\n            let newSGS = this.computeSGS(this.state.strokes, newMin, \r\n              this.state.seconds);\r\n            this.setState({minutes: newMin, SGS: newSGS});\r\n        } else {\r\n          this.setState({[name]: event.target.value});\r\n        }\r\n    }",
+                    "expression": " this.setState({submitIcon: \"fa fa-spin fa-spinner\", submitLabel: \"Saving...\"});\r\n      setTimeout(this.handleSubmitCallback,1000);",
                     "ignoreCase": false,
                     "wholeMatch": false
                 },
@@ -22,7 +22,16 @@
             {
                 "pattern": {
                     "type": "string",
-                    "expression": "/scripts/roundform2.js",
+                    "expression": "handleSubmitCallback = () => {\r\n      this.setState({submitIcon: \"fa fa-save\", submitLabel: \"Save Data\"});\r\n      let data = this.state;\r\n      delete data.submitIcon;\r\n      delete data.submitLabel;\r\n      localStorage.setItem(\"userData\",JSON.stringify(data));\r\n      alert(\"Local user data now contains \" + localStorage.getItem(\"userData\"));\r\n    }",
+                    "ignoreCase": false,
+                    "wholeMatch": false
+                },
+                "color": "yellow"
+            },
+            {
+                "pattern": {
+                    "type": "string",
+                    "expression": "event.preventDefault();\r\n      localStorage.setItem(\"userData\",JSON.stringify(this.state));\r\n      alert(\"Local user data now contains \" + localStorage.getItem(\"userData\"));",
                     "ignoreCase": false,
                     "wholeMatch": false
                 },
