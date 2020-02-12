@@ -6,3 +6,8 @@ input {
 option {
     text-align:center;
 }
+
+.btn-color-theme {
+    background-color: #13294E;
+    color: white;
+}
