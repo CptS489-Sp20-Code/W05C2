@@ -11,7 +11,10 @@ class RoundForm extends React.Component {
                     strokes: 80,
                     minutes: 50,
                     seconds: "00",
-                    notes: ""};  
+                    notes: "",
+                    submitIcon: "fa fa-save",
+                    submitLabel: "Save Data"};
+  
     }
   
     computeSGS = () => {
@@ -30,9 +33,19 @@ class RoundForm extends React.Component {
       }
     }
   
+    handleSubmitCallback = () => {
+      this.setState({submitIcon: "fa fa-save", submitLabel: "Save Data"});
+      let data = this.state;
+      delete data.submitIcon;
+      delete data.submitLabel;
+      localStorage.setItem("userData",JSON.stringify(data));
+      alert("Local user data now contains " + localStorage.getItem("userData"));
+    }
+
     handleSubmit = (event) => {
-      alert('The form was submitted!');
       event.preventDefault();
+      this.setState({submitIcon: "fa fa-spin fa-spinner", submitLabel: "Saving..."});
+      setTimeout(this.handleSubmitCallback,1000);
     }
   
     render() {
@@ -94,8 +107,11 @@ class RoundForm extends React.Component {
                 onChange={this.handleChange} />
           </label>
           <p></p>
-          <input type="submit" style={{width: "70%",fontSize: "36px"}} 
-            className="btn btn-primary btn-color-theme" value="Save Round Data" />
+          <button type="submit" className="btn btn-primary btn-color-theme"
+             style={{width: "70%",fontSize: "36px"}}>
+               <span className={this.state.submitIcon}></span>
+               &nbsp;{this.state.submitLabel}
+          </button>
           </center>
         </form>
       );
